@@ -49,7 +49,7 @@ namespace EntityAss2.Migrations
 
                     b.HasIndex("Top_Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewCourse_Inst", b =>
@@ -67,7 +67,7 @@ namespace EntityAss2.Migrations
 
                     b.HasIndex("Ins_Id");
 
-                    b.ToTable("Course_Ins");
+                    b.ToTable("Course_Ins", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewDepartment", b =>
@@ -95,7 +95,7 @@ namespace EntityAss2.Migrations
                     b.HasIndex("Ins_Id")
                         .IsUnique();
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewInstructor", b =>
@@ -132,7 +132,7 @@ namespace EntityAss2.Migrations
 
                     b.HasIndex("Dept_Id");
 
-                    b.ToTable("Instructors");
+                    b.ToTable("Instructors", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewStd_Course", b =>
@@ -150,7 +150,7 @@ namespace EntityAss2.Migrations
 
                     b.HasIndex("Course_Id");
 
-                    b.ToTable("Std_Courses");
+                    b.ToTable("Std_Courses", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewStudent", b =>
@@ -186,7 +186,7 @@ namespace EntityAss2.Migrations
 
                     b.HasIndex("Dep_Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewTopic", b =>
@@ -204,7 +204,7 @@ namespace EntityAss2.Migrations
 
                     b.HasKey("TopicId");
 
-                    b.ToTable("Topics");
+                    b.ToTable("Topics", (string)null);
                 });
 
             modelBuilder.Entity("EntityAss1.Models.NewCourse", b =>

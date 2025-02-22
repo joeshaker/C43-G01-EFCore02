@@ -30,48 +30,9 @@ namespace EntityAss2.DbContexts
         DbSet<NewCourse_Inst> Course_Insts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<NewStd_Course>().HasKey(e => new
-            {
-                e.Std_Id,
-                e.Course_Id
-
-            });
-            modelBuilder.Entity<NewCourse_Inst>().HasKey(e => new
-            {
-                e.Course_Id,
-                e.Ins_Id,
-            });
-            modelBuilder.Entity<NewInstructor>()
-              .HasOne(i => i.InsDepartment) 
-              .WithMany(d => d.Instructors)   
-              .HasForeignKey(i => i.Dept_Id)  
-              .OnDelete(DeleteBehavior.NoAction).IsRequired(); 
-
-            modelBuilder.Entity<NewInstructor>()
-                .HasOne(d => d.ManagedDepartment)         
-                .WithOne(E=>E.Manager)                     
-                .HasForeignKey<NewDepartment>(d=>d.Ins_Id)   
-                .OnDelete(DeleteBehavior.NoAction).IsRequired();
-            modelBuilder.Entity<NewCourse_Inst>()
-                .HasOne(c => c.NewCourse)
-                .WithMany(c => c.NewCourse_Insts)
-                .HasForeignKey(c => c.Course_Id)
-                .OnDelete(DeleteBehavior.NoAction).IsRequired();
-            modelBuilder.Entity<NewCourse_Inst>()
-                .HasOne(c => c.NewInstructor)
-                .WithMany(c => c.NewCourse_Insts)
-                .HasForeignKey(c => c.Ins_Id)
-                .OnDelete(DeleteBehavior.NoAction).IsRequired();
-            modelBuilder.Entity<NewStd_Course>()
-                .HasOne(c => c.Student)
-                .WithMany(c => c.Std_Courses)
-                .HasForeignKey(c => c.Std_Id)
-                .OnDelete(DeleteBehavior.NoAction).IsRequired();
-            modelBuilder.Entity<NewStd_Course>()
-                .HasOne(c => c.Course)
-                .WithMany(c => c.Std_Courses)
-                .HasForeignKey(c => c.Course_Id)
-                .OnDelete(DeleteBehavior.NoAction).IsRequired();
+            modelBuilder.ApplyConfiguration(new ModelsConf.Student_Crs_Conf());
+            modelBuilder.ApplyConfiguration(new ModelsConf.Crs_Ins_Conf());
+            modelBuilder.ApplyConfiguration(new ModelsConf.InstructorConf());
 
         }
     }
